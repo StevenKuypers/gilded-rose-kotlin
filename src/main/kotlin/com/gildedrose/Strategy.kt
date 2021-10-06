@@ -24,6 +24,7 @@ object AgedBrieStrategy : Strategy {
     override fun updateValues(item: Item) {
         super.updateValues(item)
         item.quality = increaseQuality(item, ALTERATION)
+        // FIXME: looking at the original output, the 'Quality degrades twice as fast' should apply here
     }
 }
 
@@ -40,10 +41,7 @@ object BackStageStrategy : Strategy {
 }
 
 object SulfurasStrategy : Strategy {
-    override fun updateValues(item: Item) {
-        super.updateValues(item)
-        item.quality = 80
-    }
+    override fun updateValues(item: Item) = Unit
 }
 
 object ConjuredStrategy : Strategy {

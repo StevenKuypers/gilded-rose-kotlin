@@ -10,6 +10,6 @@ internal class SulfurasStrategyTest {
         val item = Item("Sulfuras, Hand of Ragnaros", sellIn = 0, quality = 80)
         SulfurasStrategy.updateValues(item)
         assertThat(item.quality, equalTo(80))
-        assertThat(item.sellIn, equalTo(-1))
+        assertThat(item.sellIn, equalTo(0))
     }
 }
