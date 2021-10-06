@@ -7,7 +7,7 @@ class GildedRose(
 
     fun updateValues() {
         items.forEach {
-            getStrategy(it.name).setSellInAndQuality(it)
+            getStrategy(it.name).updateValues(it)
         }
     }
 }

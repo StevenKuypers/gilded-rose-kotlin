@@ -13,5 +13,7 @@ internal class StrategyTest {
         assertThat(getStrategy("Sulfuras, Hand of Ragnaros"), equalTo(SulfurasStrategy))
         assertThat(getStrategy("Conjured ...whatever"), equalTo(ConjuredStrategy))
         assertThat(getStrategy("Whatever"), equalTo(DefaultStrategy))
+        assertThat(getStrategy("There is something about Aged Brie"), equalTo(DefaultStrategy))
+        assertThat(getStrategy("There is something about Sulfuras, Hand of Ragnaros"), equalTo(DefaultStrategy))
     }
 }

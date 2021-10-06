@@ -10,7 +10,7 @@ internal class AgedBrieStrategyTest {
     @Test
     fun `it should decrease sellIn and increase quality`() {
         val item = Item(name, sellIn = 5, quality = 5)
-        AgedBrieStrategy.setSellInAndQuality(item)
+        AgedBrieStrategy.updateValues(item)
         assertThat(item.quality, equalTo(6))
         assertThat(item.sellIn, equalTo(4))
     }
@@ -18,7 +18,7 @@ internal class AgedBrieStrategyTest {
     @Test
     fun `quality cannot be more than 50`() {
         val item = Item(name, sellIn = 5, quality = 50)
-        AgedBrieStrategy.setSellInAndQuality(item)
+        AgedBrieStrategy.updateValues(item)
         assertThat(item.quality, equalTo(50))
     }
 }

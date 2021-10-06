@@ -1,7 +1,9 @@
 package com.gildedrose
 
 interface Strategy {
-    fun setSellInAndQuality(item: Item)
+    fun updateValues(item: Item) {
+        item.sellIn -= 1
+    }
 
     companion object {
         fun getStrategy(name: String): Strategy {
@@ -19,15 +21,15 @@ interface Strategy {
 }
 
 object AgedBrieStrategy : Strategy {
-    override fun setSellInAndQuality(item: Item) {
-        item.sellIn -= 1
+    override fun updateValues(item: Item) {
+        super.updateValues(item)
         item.quality = increaseQuality(item, ALTERATION)
     }
 }
 
 object BackStageStrategy : Strategy {
-    override fun setSellInAndQuality(item: Item) {
-        item.sellIn -= 1
+    override fun updateValues(item: Item) {
+        super.updateValues(item)
         when {
             item.sellIn > 10 -> item.quality = increaseQuality(item, ALTERATION)
             item.sellIn in 6..10 -> item.quality = increaseQuality(item, ALTERATION * 2)
@@ -38,23 +40,23 @@ object BackStageStrategy : Strategy {
 }
 
 object SulfurasStrategy : Strategy {
-    override fun setSellInAndQuality(item: Item) {
-        item.sellIn -= 1
+    override fun updateValues(item: Item) {
+        super.updateValues(item)
         item.quality = 80
     }
 }
 
 object ConjuredStrategy : Strategy {
-    override fun setSellInAndQuality(item: Item) {
-        item.sellIn -= 1
+    override fun updateValues(item: Item) {
+        super.updateValues(item)
         val qualityDrop = if (item.sellIn < 0) EXTRA_ALTERATION * 2 else ALTERATION  * 2
         item.quality = decreaseQuality(item, qualityDrop)
     }
 }
 
 object DefaultStrategy : Strategy {
-    override fun setSellInAndQuality(item: Item) {
-        item.sellIn -= 1
+    override fun updateValues(item: Item) {
+        super.updateValues(item)
         val qualityDrop = if (item.sellIn < 0) EXTRA_ALTERATION else ALTERATION
         item.quality = decreaseQuality(item, qualityDrop)
     }
